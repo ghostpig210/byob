@@ -35,7 +35,8 @@ from .core.dao import session_dao
 
 # globals
 __threads = {}
-__abort = False
+__abort = True
+__Debug = True
 
 class C2(threading.Thread):
     """
@@ -47,7 +48,7 @@ class C2(threading.Thread):
 
     """
 
-    def __init__(self, host='0.0.0.0', port=1337, debug=False):
+    def __init__(self, host='0.0.0.0', port=1337, debug= True):
         """
         Create a new Command & Control server
 
@@ -87,7 +88,7 @@ class C2(threading.Thread):
         modules = os.path.abspath('buildyourownbotnet/modules')
 
         # directory containing user intalled Python packages
-        site_packages = [os.path.abspath(_) for _ in sys.path if os.path.isdir(_) if 'mss' in os.listdir(_)]
+        site_packages = [os.path.abspath(_) for _ in sys.path if os.path.isdir(_) ]#if 'mss' in os.listdir(_)]
 
         if len(site_packages):
             n = 0
